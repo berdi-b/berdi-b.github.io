@@ -139,7 +139,7 @@
     <div class="login-card glass-card">
         <h1 style="letter-spacing: 4px; margin-bottom: 30px;">BERDI_B</h1>
         <input type="text" id="userInp" placeholder="Ulanyjy ady">
-        <input type="password" id="passInp" placeholder="Parol" inputmode="numeric">
+        <input type="password" id="passInp" placeholder="Parol" inputmode="numeric" oninput="autoCheckLogin()">
         <button class="btn-primary" onclick="checkLogin()">Giriş Et</button>
         <p id="loginError" style="color: #f87171; font-size: 13px; display: none; margin-top: 15px;">Maglumatlar ýalňyş!</p>
     </div>
@@ -148,7 +148,7 @@
 <div class="modal-overlay" id="yusupModal">
     <div class="modal-card glass-card">
         <h3 style="margin-bottom: 20px;">Yusup Parfume Giriş</h3>
-        <input type="password" id="yusupPassInput" placeholder="Sanly paroly giriziň" inputmode="numeric">
+        <input type="password" id="yusupPassInput" placeholder="Sanly paroly giriziň" inputmode="numeric" oninput="autoCheckYusup()">
         <div style="display: flex; gap: 10px;">
             <button class="btn-primary" onclick="closeYusupModal()" style="background: rgba(255,255,255,0.1); color: white;">Yza</button>
             <button class="btn-primary" onclick="verifyYusupPass()" style="background: var(--accent); color: white;">Giriş</button>
@@ -241,8 +241,21 @@
         yusup: JSON.parse(localStorage.getItem('yusup_data')) || [] 
     };
 
+    // Esasy giriş üçin awtomatik barlag (915091 ýa-da 9919)
+    function autoCheckLogin() {
+        const pass = document.getElementById('passInp').value;
+        if(pass === "915091" || pass === "9919") { checkLogin(); }
+    }
+
+    // Yusup Parfume bölümi üçin awtomatik barlag
+    function autoCheckYusup() {
+        const pass = document.getElementById('yusupPassInput').value;
+        if(pass === "915091" || pass === "9919") { verifyYusupPass(); }
+    }
+
     function checkLogin() {
-        if(document.getElementById('passInp').value === "915091") {
+        const pass = document.getElementById('passInp').value;
+        if(pass === "915091" || pass === "9919") {
             document.getElementById('loginPage').style.display = 'none';
             document.getElementById('mainApp').style.display = 'block';
             document.getElementById('topLogo').style.display = 'block';
@@ -261,7 +274,8 @@
     }
 
     function verifyYusupPass() {
-        if(document.getElementById('yusupPassInput').value === "915091") {
+        const pass = document.getElementById('yusupPassInput').value;
+        if(pass === "915091" || pass === "9919") {
             closeYusupModal();
             switchPage('yusup');
         } else { alert("Parol ýalňyş!"); }
@@ -271,32 +285,23 @@
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
         const topLogo = document.getElementById('topLogo');
-
         sidebar.classList.toggle('active');
         overlay.classList.toggle('active');
-
-        if (sidebar.classList.contains('active')) {
-            topLogo.style.opacity = '0';
-        } else {
-            topLogo.style.opacity = '1';
-        }
+        topLogo.style.opacity = sidebar.classList.contains('active') ? '0' : '1';
     }
 
     function switchPage(p) {
         const sidebar = document.getElementById('sidebar');
         if (sidebar.classList.contains('active')) toggleMenu();
-
         if(p !== 'export') current = p;
         document.getElementById('nav-home').classList.toggle('active', p === 'berdi');
         document.getElementById('nav-yusup').classList.toggle('active', p === 'yusup');
         document.getElementById('nav-export').classList.toggle('active', p === 'export');
-        
         document.getElementById('homeUI').style.display = (p === 'berdi' ? 'block' : 'none');
         document.getElementById('yusupUI').style.display = (p === 'yusup' ? 'block' : 'none');
         document.getElementById('exportUI').style.display = (p === 'export' ? 'block' : 'none');
         document.getElementById('inputSection').style.display = (p === 'export' ? 'none' : 'block');
         document.getElementById('itemList').style.display = (p === 'export' ? 'none' : 'block');
-        
         if(p !== 'export') updateUI();
     }
 
@@ -304,24 +309,17 @@
         const list = document.getElementById('itemList');
         const searchTerm = document.getElementById('searchBox').value.toLowerCase();
         list.innerHTML = '';
-        
         let totalCount = 0, totalCost = 0, totalProfit = 0;
         
-        // Täze goşulan harytlar iň ýokarda görüner ýaly tersine aýlaýarys (optional)
-        const displayData = [...data[current]].reverse();
-
         data[current].forEach((item, i) => {
             if(item.name.toLowerCase().includes(searchTerm)) {
                 let count = Number(item.count);
                 let price = Number(item.price);
                 let profit = Number(item.profit);
-                // Köne maglumatlarda sene ýok bolsa boş görkezer
                 let dateStr = item.date ? item.date : "";
-
                 totalCount += count;
                 totalCost += (price * count);
                 totalProfit += (profit * count);
-
                 const div = document.createElement('div');
                 div.className = 'glass-card item-card';
                 div.innerHTML = `
@@ -336,7 +334,7 @@
                         <b>${count}</b>
                         <button class="qty-btn" onclick="qty(${i},1)">+</button>
                     </div>`;
-                list.appendChild(div);
+                list.prepend(div);
             }
         });
 
@@ -351,7 +349,6 @@
             document.getElementById('yCountH').innerText = totalCount;
             document.getElementById('yCostH').innerText = totalCost.toFixed(2) + " TMT";
         }
-
         localStorage.setItem(current + '_data', JSON.stringify(data[current]));
     }
 
@@ -360,19 +357,10 @@
         const c = parseFloat(document.getElementById('count').value);
         const p = parseFloat(document.getElementById('price').value);
         const pr = parseFloat(document.getElementById('profit').value) || 0;
-
-        // Häzirki wagty we senäni alýarys
         const now = new Date();
         const dateString = now.toLocaleDateString('tk-TM') + " " + now.toLocaleTimeString('tk-TM', {hour: '2-digit', minute:'2-digit'});
-
         if(n && !isNaN(c) && !isNaN(p)) { 
-            data[current].push({ 
-                name: n, 
-                count: c, 
-                price: p, 
-                profit: pr,
-                date: dateString // Senäni saklaýarys
-            }); 
+            data[current].push({ name: n, count: c, price: p, profit: pr, date: dateString }); 
             updateUI(); 
             ['name', 'count', 'price', 'profit'].forEach(id => document.getElementById(id).value = ''); 
         }
@@ -380,17 +368,14 @@
 
     function qty(i, d) { if(data[current][i].count + d >= 0) { data[current][i].count += d; updateUI(); } }
     function deleteItem(i) { if(confirm("Pozmaly?")) { data[current].splice(i, 1); updateUI(); } }
-    
     function toggleSearch() {
         const sb = document.getElementById('searchBox');
         sb.style.display = (sb.style.display === 'block') ? 'none' : 'block';
     }
-
     function toggleTheme() {
         const t = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         document.body.setAttribute('data-theme', t);
     }
-
     function exportToCSV() {
         let csvContent = "data:text/csv;charset=utf-8,Haryt,Sany,Bahasy,Peyda,Sene\n";
         data[current].forEach(i => csvContent += `${i.name},${i.count},${i.price},${(i.profit*i.count).toFixed(2)},${i.date || ''}\n`);
@@ -399,7 +384,6 @@
         link.setAttribute("download", `${current}_hasabat.csv`);
         link.click();
     }
-
     function clearData() { if(confirm("Ählisini pozmak isleýärsiňizmi?")) { localStorage.clear(); location.reload(); } }
 </script>
 </body>
