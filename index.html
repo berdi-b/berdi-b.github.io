@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berdi_B - Premium Edition</title>
+    
+    <title>Berdi_B - Premium Hasap Kasa we Parfüm Hasabaty</title>
+    <meta name="description" content="Berdi_B - Onlaýn hasap-kasa programmasy. Parfüm işiňiz üçin peýda, çykdaýjy we haryt hasabatyny aňsatlyk bilen ýörediň.">
+    <meta name="keywords" content="Berdi_B, Hasap Kasa, Berdi Hasap, Parfüm hasaby, söwda hasaby, Berdi_B kasa, TMT hasabat">
+    <meta name="author" content="Berdi">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Berdi_B - Premium Hasap Kasa">
+    <meta property="og:description" content="Işiňizi sanly ulgamda dolandyryň. Peýda we haryt hasabaty.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Berdi_B">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -136,13 +147,14 @@
 <div class="center-logo" id="topLogo" style="display: none;">BERDI_B</div>
 
 <div id="loginPage">
-    <div class="login-card glass-card">
+    <main class="login-card glass-card">
         <h1 style="letter-spacing: 4px; margin-bottom: 30px;">BERDI_B</h1>
+        <p style="color: var(--text-sub); font-size: 12px; margin-bottom: 20px;">Premium Hasap Kasa Ulgamy</p>
         <input type="text" id="userInp" placeholder="Ulanyjy ady">
         <input type="password" id="passInp" placeholder="Parol" inputmode="numeric" oninput="autoCheckLogin()">
         <button class="btn-primary" onclick="checkLogin()">Giriş Et</button>
         <p id="loginError" style="color: #f87171; font-size: 13px; display: none; margin-top: 15px;">Maglumatlar ýalňyş!</p>
-    </div>
+    </main>
 </div>
 
 <div class="modal-overlay" id="yusupModal">
@@ -158,29 +170,29 @@
 
 <div id="mainApp" style="display:none;">
     <header>
-        <div onclick="toggleMenu()" class="icon-btn">☰</div>
+        <div onclick="toggleMenu()" class="icon-btn" aria-label="Menu">☰</div>
         <div class="header-controls">
-            <div onclick="toggleSearch()" class="icon-btn">🔍</div>
-            <div onclick="toggleTheme()" class="icon-btn">🌓</div>
+            <div onclick="toggleSearch()" class="icon-btn" aria-label="Gözleg">🔍</div>
+            <div onclick="toggleTheme()" class="icon-btn" aria-label="Tema">🌓</div>
         </div>
     </header>
 
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-    <div class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebar">
         <h2 style="font-size: 28px; color: var(--accent); margin-bottom: 30px;">BERDI_B</h2>
         <div class="nav-link active" id="nav-home" onclick="switchPage('berdi')">🏠 Esasy Sahypa</div>
         <div class="nav-link" id="nav-yusup" onclick="openYusupModal()">💎 Yusup Parfume</div>
         <div class="nav-link" id="nav-export" onclick="switchPage('export')">📊 Maglumatlar</div>
         <div class="nav-link" onclick="location.reload()" style="margin-top: 40px; color: #f87171;">🚪 Çykyş Et</div>
-    </div>
+    </nav>
 
-    <div class="container">
+    <main class="container">
         <input type="text" id="searchBox" style="display:none;" placeholder="Harydy gözle..." oninput="updateUI()">
         
-        <div id="homeUI">
+        <section id="homeUI">
             <div class="glass-card main-summary">
-                <span style="font-size: 11px; font-weight: 800; opacity: 0.8; letter-spacing: 2px;">JEMI PEÝDA</span>
+                <h2 style="font-size: 11px; font-weight: 800; opacity: 0.8; letter-spacing: 2px; margin: 0;">JEMI PEÝDA</h2>
                 <div class="total-val" id="mainVal">0.00 TMT</div>
                 <div style="display: flex; justify-content: center; gap: 20px; font-size: 13px;">
                     <span>Sany: <b id="tCountH">0</b></span>
@@ -189,65 +201,64 @@
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
                 <div class="stat-card" style="background: var(--kakajan-grad);">
-                    <span class="stat-label">KAKAJAN</span>
+                    <span class="stat-label">KAKAJAN PEÝDA</span>
                     <div id="kProfit" class="stat-amount">0.00</div>
                 </div>
                 <div class="stat-card" style="background: var(--magazyn-grad);">
-                    <span class="stat-label">MAGAZYN</span>
+                    <span class="stat-label">MAGAZYN PEÝDA</span>
                     <div id="mProfit" class="stat-amount">0.00</div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="yusupUI" style="display: none;">
+        <section id="yusupUI" style="display: none;">
             <div class="glass-card main-summary yusup-summary">
-                <span style="font-size: 11px; font-weight: 800; opacity: 0.8; letter-spacing: 2px;">JEMI PEÝDA</span>
+                <h2 style="font-size: 11px; font-weight: 800; opacity: 0.8; letter-spacing: 2px; margin: 0;">JEMI PEÝDA</h2>
                 <div class="total-val" id="yProfitMain">0.00 TMT</div>
                 <div style="display: flex; justify-content: center; gap: 20px; font-size: 13px;">
                     <span>Sany: <b id="yCountH">0</b></span>
                     <span>Çykdaýjy: <b id="yCostH">0.00</b></span>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="exportUI" style="display: none;">
-            <h2 style="margin-bottom: 20px;">Hasabatlar</h2>
+        <section id="exportUI" style="display: none;">
+            <h2 style="margin-bottom: 20px;">Hasabatlar we Sazlamalar</h2>
             <div class="export-btn" onclick="exportToCSV()" style="padding: 20px; background: var(--card-bg); border-radius: 20px; cursor: pointer; margin-bottom: 15px; border: 1px solid var(--glass-border);">
-                <b>📄 CSV (Excel) Ýükle</b>
+                <b>📄 CSV (Excel) Formatda Ýükle</b>
             </div>
             <div class="export-btn" onclick="clearData()" style="padding: 20px; background: var(--card-bg); border-radius: 20px; cursor: pointer; margin-bottom: 15px; border: 1px solid #f43f5e; color: #f43f5e;">
-                <b>🗑️ Ählisini Poz</b>
+                <b>🗑️ Ähli Maglumatlary Poz</b>
             </div>
-        </div>
+        </section>
 
-        <div class="glass-card" id="inputSection">
-            <input type="text" id="name" placeholder="Harydyň ady">
+        <section class="glass-card" id="inputSection">
+            <input type="text" id="name" placeholder="Harydyň ady (Meselem: Parfüm X)">
             <div style="display: flex; gap: 10px;">
                 <input type="number" id="count" placeholder="Sany">
                 <input type="number" id="price" placeholder="Bahasy">
             </div>
-            <input type="number" id="profit" placeholder="Peýda (1 sany)">
-            <button class="btn-primary" onclick="addItem()" style="background: var(--accent); color: white;">Goş</button>
-        </div>
+            <input type="number" id="profit" placeholder="Peýda (1 sany üçin)">
+            <button class="btn-primary" onclick="addItem()" style="background: var(--accent); color: white;">Harydy Goş</button>
+        </section>
 
         <div id="itemList"></div>
-    </div>
+    </main>
 </div>
 
 <script>
+    // JavaScript funksiýalary öňküsi ýaly galýar, emma UI optimizasiýasy üçin birnäçe düşündirişli sözler goşuldy
     let current = 'berdi';
     let data = { 
         berdi: JSON.parse(localStorage.getItem('berdi_data')) || [], 
         yusup: JSON.parse(localStorage.getItem('yusup_data')) || [] 
     };
 
-    // Esasy giriş üçin awtomatik barlag (915091 ýa-da 9919)
     function autoCheckLogin() {
         const pass = document.getElementById('passInp').value;
         if(pass === "915091" || pass === "9919") { checkLogin(); }
     }
 
-    // Yusup Parfume bölümi üçin awtomatik barlag
     function autoCheckYusup() {
         const pass = document.getElementById('yusupPassInput').value;
         if(pass === "915091" || pass === "9919") { verifyYusupPass(); }
@@ -324,7 +335,7 @@
                 div.className = 'glass-card item-card';
                 div.innerHTML = `
                     <div class="item-info">
-                        <b>${item.name}</b><br>
+                        <strong>${item.name}</strong><br>
                         <small>${price} TMT | Peýda: +${(profit * count).toFixed(2)}</small>
                         <span class="date-label">${dateStr}</span>
                         <small onclick="deleteItem(${i})" style="color:#f43f5e;cursor:pointer; display:inline-block; margin-top:5px;">Poz</small>
