@@ -630,6 +630,30 @@
     }
 
     function clearData() { if(confirm("Ählisini pozmalymy?")) { localStorage.clear(); location.reload(); } }
+</script>type="module">
+    // Firebase modullaryny ýükleýär
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+    // Firebase konfigurasiýaňyz (Siziň koddan alnan maglumatlar)
+    const firebaseConfig = {
+      apiKey: "AIzaSyA-6RV8U_VBNlEzBLfiFcloFMPnmswKSc0",
+      authDomain: "berdi-29ef2.firebaseapp.com",
+      projectId: "berdi-29ef2",
+      storageBucket: "berdi-29ef2.firebasestorage.app",
+      messagingSenderId: "252380968432",
+      appId: "1:252380968432:web:56a3c95534e9aa106dd935",
+      measurementId: "G-CPQK2WC1DK"
+    };
+
+    // Firebase-i işlediň
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Bazany global görnüşde ulanmak üçin
+    window.db = db;
+    
+    console.log("Firebase üstünlikli baglanyşdy!");
 </script>
 </body>
 </html>
