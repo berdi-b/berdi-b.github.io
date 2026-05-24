@@ -368,7 +368,6 @@
         const pass = document.getElementById('passInp').value.trim();
         if (user !== "admin") {
             let isCustomUserValid = usersList.some(u => u.username.toLowerCase() === user && u.password === pass);
-            // Diňe Berdi we Kakajan admin
             let isAdminValid = (user === "berdi" || user === "kakajan") && (pass === "915091" || pass === "9919");
             if (isAdminValid || isCustomUserValid) checkLogin();
         }
@@ -630,12 +629,12 @@
     }
 
     function clearData() { if(confirm("Ählisini pozmalymy?")) { localStorage.clear(); location.reload(); } }
-</script>type="module">
-    // Firebase modullaryny ýükleýär
+</script>
+
+<script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
     import { getFirestore } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
-    // Firebase konfigurasiýaňyz (Siziň koddan alnan maglumatlar)
     const firebaseConfig = {
       apiKey: "AIzaSyA-6RV8U_VBNlEzBLfiFcloFMPnmswKSc0",
       authDomain: "berdi-29ef2.firebaseapp.com",
@@ -646,14 +645,12 @@
       measurementId: "G-CPQK2WC1DK"
     };
 
-    // Firebase-i işlediň
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-
-    // Bazany global görnüşde ulanmak üçin
     window.db = db;
     
     console.log("Firebase üstünlikli baglanyşdy!");
 </script>
+
 </body>
 </html>
