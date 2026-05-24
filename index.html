@@ -17,16 +17,7 @@
         }
 
         * { box-sizing: border-box; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
-            background-size: cover;
-            color: var(--text-main); 
-            margin: 0; padding: 0;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
+        body { font-family: 'Inter', sans-serif; background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%); color: var(--text-main); margin: 0; min-height: 100vh; overflow-x: hidden; }
 
         @keyframes rgbSoftText {
             0% { color: #38bdf8; text-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
@@ -44,128 +35,22 @@
 
         .rgb-text { animation: rgbSoftText 8s infinite ease-in-out; }
         .rgb-card-glow { animation: rgbSoftBg 8s infinite ease-in-out; }
-
-        .center-logo {
-            position: fixed; top: 15px; left: 50%; transform: translateX(-50%);
-            z-index: 500; font-weight: 900; font-size: 20px; letter-spacing: 3px;
-            background: rgba(255, 255, 255, 0.02); padding: 6px 20px;
-            border-radius: 50px; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border); pointer-events: none;
-        }
-
-        #loginPage {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: inherit;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; padding: 24px;
-        }
-
-        .login-card-premium { 
-            width: 100%; max-width: 360px; text-align: center; background: var(--card-bg); border-radius: 24px; padding: 45px 30px;
-            backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid var(--glass-border); box-shadow: var(--shadow-lg);
-        }
-
-        .premium-input-group { position: relative; margin-bottom: 25px; text-align: left; }
-        .premium-input-group label { font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 1px; display: block; margin-bottom: 5px; }
-        .premium-input {
-            width: 100%; padding: 12px 0px; background: transparent !important; border: none !important; border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
-            border-radius: 0px !important; color: #fff !important; font-size: 16px !important; outline: none !important;
-        }
-        .premium-input:focus { border-bottom: 1px solid var(--accent) !important; }
-
-        .premium-btn {
-            width: 100%; padding: 15px; border-radius: 12px; border: none; background: #0ea5e9; color: #ffffff; font-size: 15px; font-weight: 700;
-            letter-spacing: 1.5px; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3); margin-top: 10px;
-        }
-
-        .modal-overlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); z-index: 10000; display: none;
-            flex-direction: column; align-items: center; justify-content: center; padding: 20px;
-        }
-        .modal-card { width: 100%; max-width: 350px; text-align: center; }
-
-        .register-link-container { margin-top: 25px; text-align: center; }
-        .register-link { color: rgba(255,255,255,0.4); font-weight: 600; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
-        .register-link span { color: #0ea5e9; }
-
-        .admin-modal-card {
-            width: 100%; max-width: 400px; padding: 25px; background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 24px; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.6); backdrop-filter: blur(15px);
-        }
-        .admin-users-list { margin-top: 20px; padding: 0; list-style: none; max-height: 280px; overflow-y: auto; }
-        .admin-user-item {
-            display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255, 255, 255, 0.02);
-            border-radius: 12px; margin-bottom: 10px; border: 1px solid var(--glass-border);
-        }
-        .delete-user-btn { background: rgba(244, 63, 94, 0.15); color: #f43f5e; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 12px; }
-        .fixed-admin-badge { font-size: 11px; background: rgba(99, 102, 241, 0.2); color: #818cf8; padding: 4px 10px; border-radius: 6px; font-weight: 600; }
-
-        header { 
-            display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; position: fixed; top: 0; width: 100%; z-index: 100;
-            backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); max-width: 500px; left: 50%; transform: translateX(-50%);
-            border-bottom: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.01);
-        }
-
-        .icon-btn { 
-            font-size: 14px; font-weight: 600; cursor: pointer; color: #fff; padding: 0 14px; height: 38px; display: flex; align-items: center; justify-content: center;
-            background: rgba(255,255,255,0.04); border-radius: 12px; gap: 6px; border: 1px solid rgba(255,255,255,0.03);
-        }
-
-        .sidebar {
-            position: fixed; top: 10px; left: -110%; width: 85%; max-width: 320px; height: calc(100% - 20px);
-            background: rgba(15, 23, 42, 0.98); z-index: 2000; padding: 40px 25px; border-radius: 25px;
-            backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); border: 1px solid var(--glass-border);
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        .center-logo { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 500; font-weight: 900; font-size: 20px; letter-spacing: 3px; background: rgba(255, 255, 255, 0.02); padding: 6px 20px; border-radius: 50px; backdrop-filter: blur(15px); border: 1px solid var(--glass-border); }
+        #loginPage { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: inherit; display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 24px; }
+        .login-card-premium { width: 100%; max-width: 360px; text-align: center; background: var(--card-bg); border-radius: 24px; padding: 45px 30px; backdrop-filter: blur(30px); border: 1px solid var(--glass-border); box-shadow: var(--shadow-lg); }
+        .premium-input { width: 100%; padding: 12px 0px; background: transparent !important; border: none !important; border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important; color: #fff !important; font-size: 16px !important; outline: none !important; }
+        .premium-btn { width: 100%; padding: 15px; border-radius: 12px; border: none; background: #0ea5e9; color: #ffffff; font-size: 15px; font-weight: 700; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .glass-card { background: var(--card-bg); border-radius: 24px; padding: 24px; border: 1px solid var(--glass-border); margin-bottom: 20px; backdrop-filter: blur(30px); }
+        .btn-primary { width: 100%; padding: 16px; border-radius: 14px; border: none; background: #0ea5e9; color: #fff; font-size: 15px; font-weight: 800; cursor: pointer; text-transform: uppercase; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; position: fixed; top: 0; width: 100%; max-width: 500px; left: 50%; transform: translateX(-50%); z-index: 100; backdrop-filter: blur(30px); background: rgba(255, 255, 255, 0.01); border-bottom: 1px solid var(--glass-border); }
+        .icon-btn { cursor: pointer; color: #fff; padding: 0 14px; height: 38px; display: flex; align-items: center; background: rgba(255,255,255,0.04); border-radius: 12px; }
+        .sidebar { position: fixed; top: 10px; left: -110%; width: 85%; max-width: 320px; height: calc(100% - 20px); background: rgba(15, 23, 42, 0.98); z-index: 2000; padding: 40px 25px; border-radius: 25px; transition: 0.5s; }
         .sidebar.active { left: 10px; }
-        .nav-link { padding: 18px; margin-bottom: 12px; border-radius: 18px; cursor: pointer; font-weight: 700; color: var(--text-sub); background: rgba(255,255,255,0.02); }
-        .nav-link.active { color: #fff; background: #0ea5e9; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2); }
-
+        .nav-link { padding: 18px; margin-bottom: 12px; border-radius: 18px; cursor: pointer; color: var(--text-sub); background: rgba(255,255,255,0.02); }
+        .nav-link.active { color: #fff; background: #0ea5e9; }
         .container { max-width: 500px; margin: auto; padding: 95px 18px 40px 18px; }
-
-        .glass-card { 
-            background: var(--card-bg); border-radius: 24px; padding: 24px; border: 1px solid var(--glass-border); margin-bottom: 20px; 
-            backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); box-shadow: var(--shadow-lg); 
-        }
-        
-        .main-summary { color: white; text-align: center; padding: 32px 20px; }
-        .total-val { font-size: 34px; font-weight: 900; margin: 10px 0; letter-spacing: -1px; }
-        
-        .stat-card { padding: 18px; border-radius: 20px; color: white; text-align: center; backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); }
-        .stat-label { font-size: 10px; font-weight: 800; opacity: 0.8; letter-spacing: 1px; text-transform: uppercase; display: block; }
-        .stat-amount { font-size: 18px; font-weight: 700; margin-top: 5px; }
-        
-        .glass-card input { 
-            width: 100%; padding: 12px 0px; background: transparent !important; border: none !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important; color: #fff !important; font-size: 16px !important; outline: none !important; margin-bottom: 20px !important; 
-        }
-        .glass-card input:focus { border-bottom: 1px solid var(--accent) !important; }
-
-        .btn-primary { 
-            width: 100%; padding: 16px; border-radius: 14px; border: none; background: #0ea5e9; color: #fff; font-size: 15px; font-weight: 800; 
-            cursor: pointer; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
-        }
-
-        .item-card { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-        .item-details { flex-grow: 1; min-width: 0; }
-        .item-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-        
-        .qty-control { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.03); padding: 6px 12px; border-radius: 14px; border: 1px solid var(--glass-border); }
-        .qty-btn { width: 32px; height: 32px; border-radius: 10px; border: none; background: rgba(255,255,255,0.08); color: #fff; cursor: pointer; font-weight: bold; }
-        
-        .edit-action-btn { background: transparent; border: none; color: var(--text-sub); cursor: pointer; font-size: 14px; padding: 4px; }
-        .edit-action-btn:hover { color: #fff; }
-
-        .overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); backdrop-filter: blur(8px); display:none; z-index: 1500; }
-        .overlay.active { display: block; }
-        .file-input-label { display: block; width: 100%; padding: 20px; background: rgba(255,255,255,0.01); border-radius: 20px; cursor: pointer; margin-bottom: 15px; border: 1px dashed var(--accent); color: var(--accent); text-align: center; font-weight: bold; }
-        
-        .btn-danger {
-            background: rgba(244, 63, 94, 0.2) !important;
-            color: #f43f5e !important;
-            border: 1px solid rgba(244, 63, 94, 0.4) !important;
-        }
-        .btn-danger:hover {
-            background: rgba(244, 63, 94, 0.4) !important;
-        }
+        .item-card { display: flex; justify-content: space-between; align-items: center; padding: 20px; }
     </style>
 </head>
 <body>
@@ -174,461 +59,34 @@
 
 <div id="loginPage">
     <div class="login-card-premium">
-        <h2 class="rgb-text" style="letter-spacing: 4px; margin-bottom: 40px; font-weight: 900; font-size: 32px;">BERDI_B</h2>
-        <div class="premium-input-group">
-            <label>ULANYJY ADY</label>
-            <input type="text" id="userInp" class="premium-input" placeholder="Adyňyz" oninput="autoCheckLogin()">
-        </div>
-        <div class="premium-input-group">
-            <label>PAROL</label>
-            <input type="password" id="passInp" class="premium-input" placeholder="••••••" inputmode="numeric" pattern="[0-9]*" oninput="autoCheckLogin()">
-        </div>
+        <h2 class="rgb-text" style="margin-bottom: 40px;">BERDI_B</h2>
+        <input type="text" id="userInp" class="premium-input" placeholder="Ulanyjy ady">
+        <input type="password" id="passInp" class="premium-input" placeholder="Parol">
         <button class="premium-btn" onclick="checkLogin()">Giriş et</button>
-        <div class="register-link-container">
-            <div class="register-link" onclick="openRegisterModal()">Täze ulanyjy? <span>Hasap döret</span></div>
-        </div>
-        <p id="loginError" style="color: #f87171; font-size: 13px; display: none; margin-top: 15px;">Maglumatlar ýalňyş!</p>
-    </div>
-</div>
-
-<div class="modal-overlay" id="adminModal">
-    <div class="admin-modal-card">
-        <div style="font-weight: 800; color: #10b981; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(16, 185, 129, 0.2); padding-bottom: 12px; font-size: 18px;">
-            <span>👥 Jemi Ulanyjylar:</span>
-            <span id="adminUserCount">2</span>
-        </div>
-        <ul class="admin-users-list" id="adminUsersList"></ul>
-        <button class="btn-primary" onclick="closeAdminModal()" style="background: rgba(255,255,255,0.1); color: white; margin-top: 15px; padding: 14px; box-shadow: none;">Yza</button>
-    </div>
-</div>
-
-<div class="modal-overlay" id="registerModal">
-    <div class="modal-card glass-card">
-        <h3 class="rgb-text" style="margin-bottom: 25px; font-weight: 800;">Täze Ulanyjy Döretmek</h3>
-        <input type="text" id="regUserInp" placeholder="Täze ulanyjy ady">
-        <input type="password" id="regPassInp" placeholder="Täze parol" inputmode="numeric" pattern="[0-9]*">
-        <div style="display: flex; gap: 10px;">
-            <button class="btn-primary" onclick="closeRegisterModal()" style="background: rgba(255,255,255,0.1); color: white; box-shadow: none;">Yza</button>
-            <button class="btn-primary" onclick="saveNewUser()">Döret</button>
-        </div>
-    </div>
-</div>
-
-<div class="modal-overlay" id="yusupModal">
-    <div class="modal-card glass-card">
-        <h3 class="rgb-text" style="margin-bottom: 25px; font-weight: 800;">Optom Baha Giriş</h3>
-        <input type="password" id="yusupPassInput" placeholder="Sanly paroly giriziň" inputmode="numeric" pattern="[0-9]*" oninput="autoCheckYusup()">
-        <div style="display: flex; gap: 10px;">
-            <button class="btn-primary" onclick="closeYusupModal()" style="background: rgba(255,255,255,0.1); color: white; box-shadow: none;">Yza</button>
-            <button class="btn-primary" onclick="verifyYusupPass()">Giriş</button>
-        </div>
-    </div>
-</div>
-
-<div class="modal-overlay" id="editModal">
-    <div class="modal-card glass-card">
-        <h3 class="rgb-text" style="margin-bottom: 25px; font-weight: 800;">Haryt Sazlamalary</h3>
-        <input type="text" id="editName" placeholder="Haryt ady">
-        <input type="number" id="editPrice" placeholder="Bahasy" step="any">
-        <input type="number" id="editProfit" placeholder="Peýdasy" step="any">
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-            <button class="btn-primary" onclick="saveEditedItem()">Ýatda Sakla</button>
-            <button class="btn-primary btn-danger" onclick="deleteCurrentItem()">Harydy Poz</button>
-            <button class="btn-primary" onclick="closeEditModal()" style="background: rgba(255,255,255,0.1); color: white; box-shadow: none;">Yza</button>
-        </div>
     </div>
 </div>
 
 <div id="mainApp" style="display:none;">
     <header>
-        <div onclick="toggleMenu()" class="icon-btn">☰ Menu</div>
-        <div class="header-controls">
-            <div onclick="toggleSearch()" class="icon-btn" style="width: 38px; padding: 0;">🔍</div>
-        </div>
+        <div onclick="toggleMenu()" class="icon-btn">Menu</div>
     </header>
-
-    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-
     <div class="sidebar" id="sidebar">
-        <h2 class="rgb-text" style="font-size: 28px; margin-bottom: 30px; font-weight: 900; letter-spacing: 2px;">BERDI_B</h2>
-        <div class="nav-link active" id="nav-home" onclick="switchPage('berdi')">🏠 Esasy Sahypa</div>
-        <div class="nav-link" id="nav-satylan" onclick="switchPage('satylan')">📦 Satylan Harytlar</div>
-        <div class="nav-link" id="nav-yusup" onclick="openYusupModal()">💎 Optom Baha</div>
-        <div class="nav-link" id="nav-export" onclick="switchPage('export')">📊 Maglumatlar</div>
-        <div class="nav-link" onclick="location.reload()" style="margin-top: 40px; color: #f87171;">🚪 Çykyş Et</div>
+        <div class="nav-link active" onclick="switchPage('berdi')">Esasy</div>
+        <div class="nav-link" onclick="location.reload()">Çykyş</div>
     </div>
-
     <div class="container">
-        <input type="text" id="searchBox" style="display:none; margin-bottom: 20px !important; background: rgba(255,255,255,0.05) !important; padding: 12px 15px !important; border-radius: 12px !important; border: 1px solid var(--glass-border) !important;" placeholder="Harydy gözle..." oninput="updateUI()">
-        
-        <div id="homeUI">
-            <div class="glass-card main-summary rgb-card-glow">
-                <span style="font-size: 11px; font-weight: 800; opacity: 0.8; letter-spacing: 2px;">JEMI PEÝDA</span>
-                <div class="total-val rgb-text" id="mainVal">0.00 TMT</div>
-                <div style="display: flex; justify-content: center; gap: 20px; font-size: 13px; opacity: 0.9;">
-                    <span>Sany: <b id="tCountH">0</b></span>
-                    <span>Çykdaýjy: <b id="tCostH">0.00</b></span>
-                </div>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
-                <div class="stat-card rgb-card-glow">
-                    <span class="stat-label" id="currentUserLabelHome">ULANYJY</span>
-                    <div id="kProfit" class="stat-amount rgb-text">0.00</div>
-                </div>
-                <div class="stat-card rgb-card-glow">
-                    <span class="stat-label">MAGAZYN</span>
-                    <div id="mProfit" class="stat-amount rgb-text">0.00</div>
-                </div>
-            </div>
-        </div>
-
-        <div id="satylanUI" style="display: none;">
-            <div class="glass-card main-summary rgb-card-glow">
-                <span style="font-size: 11px; font-weight: 800; opacity: 0.8; letter-spacing: 2px;">JEMI PEÝDA (SATYLAN)</span>
-                <div class="total-val rgb-text" id="sMainVal">0.00 TMT</div>
-                <div style="display: flex; justify-content: center; gap: 20px; font-size: 13px;">
-                    <span>Sany: <b id="sCountH">0</b></span>
-                    <span>Çykdaýjy: <b id="sCostH">0.00</b></span>
-                </div>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
-                <div class="stat-card rgb-card-glow">
-                    <span class="stat-label" id="currentUserLabelSatylan">ULANYJY</span>
-                    <div id="sKProfit" class="stat-amount rgb-text">0.00</div>
-                </div>
-                <div class="stat-card rgb-card-glow">
-                    <span class="stat-label">MAGAZYN</span>
-                    <div id="sMProfit" class="stat-amount rgb-text">0.00</div>
-                </div>
-            </div>
-        </div>
-
-        <div id="yusupUI" style="display: none;">
-            <div class="glass-card main-summary rgb-card-glow">
-                <span style="font-size: 11px; font-weight: 800; opacity: 0.8; letter-spacing: 2px;">JEMI PEÝDA (OPTOM BAHA)</span>
-                <div class="total-val rgb-text" id="yMainVal">0.00 TMT</div>
-                <div style="display: flex; justify-content: center; gap: 20px; font-size: 13px;">
-                    <span>Sany: <b id="yCountH">0</b></span>
-                    <span>Çykdaýjy: <b id="yCostH">0.00</b></span>
-                </div>
-            </div>
-        </div>
-
-        <div id="exportUI" style="display: none;">
-            <div class="glass-card">
-                <h2 style="margin-top: 0; margin-bottom: 20px;">Hasabatlar</h2>
-                <div onclick="exportToCSV()" style="padding: 18px; background: rgba(255,255,255,0.02); border-radius: 16px; cursor: pointer; margin-bottom: 15px; border: 1px solid var(--glass-border);">
-                    <b>📄 CSV (Excel) Ýükle</b>
-                </div>
-                <h3 style="margin: 25px 0 15px 0;">Ätiýaçlyk Nusga (Backup)</h3>
-                <div onclick="exportBackupJSON()" style="padding: 18px; background: rgba(56, 189, 248, 0.08); border-radius: 16px; cursor: pointer; margin-bottom: 15px; border: 1px solid var(--accent); color: var(--accent);">
-                    <b>💾 Telefona Faýl Ýükle (Export JSON)</b>
-                </div>
-                <label class="file-input-label">
-                    📥 Telefondan Faýl Saýlap Ýükle (Import JSON)
-                    <input type="file" id="backupFileInp" accept=".json" onchange="importBackupJSON(event)" style="display: none;">
-                </label>
-                <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 30px 0;">
-                <div onclick="clearData()" style="padding: 18px; background: rgba(244, 63, 94, 0.03); border-radius: 16px; cursor: pointer; border: 1px solid #f43f5e; color: #f43f5e; text-align: center;">
-                    <b>🗑️ Ählisini Poz (Sifirla)</b>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-card" id="inputSection">
-            <input type="text" id="name" placeholder="Harydyň ady">
-            <div style="display: flex; gap: 15px;">
-                <input type="number" id="count" placeholder="Sany">
-                <input type="number" id="price" placeholder="Bahasy" step="any">
-            </div>
-            <input type="number" id="profit" placeholder="Peýda (1 sany)" step="any">
-            <button class="btn-primary" onclick="addItem()">Goş</button>
-        </div>
-
         <div id="itemList"></div>
     </div>
 </div>
 
 <script>
-    let current = 'berdi';
-    let loggedInUser = 'ULANYJY';
-    let selectedItemIndex = null;
-    
-    let data = { 
-        berdi: JSON.parse(localStorage.getItem('berdi_data')) || [], 
-        satylan: JSON.parse(localStorage.getItem('satylan_data')) || [],
-        yusup: JSON.parse(localStorage.getItem('yusup_data')) || [] 
-    };
-    
-    let usersList = JSON.parse(localStorage.getItem('app_users_list')) || [];
-
-    function autoCheckLogin() {
-        const user = document.getElementById('userInp').value.trim().toLowerCase();
-        const pass = document.getElementById('passInp').value.trim();
-        if (user !== "admin") {
-            let isCustomUserValid = usersList.some(u => u.username.toLowerCase() === user && u.password === pass);
-            let isAdminValid = (user === "berdi" || user === "kakajan") && (pass === "915091" || pass === "9919");
-            if (isAdminValid || isCustomUserValid) checkLogin();
-        }
-    }
-
+    // Siziň öňki funksiýalaryňyz we lojikanyňyz şu ýerde...
     function checkLogin() {
-        const user = document.getElementById('userInp').value.trim().toLowerCase();
-        const pass = document.getElementById('passInp').value.trim();
-        
-        if(user === "admin" && pass === "admin") { openAdminModal(); return; }
-
-        let matchedUser = usersList.find(u => u.username.toLowerCase() === user && u.password === pass);
-        let isCustomUserValid = !!matchedUser;
-        let isAdminValid = (user === "berdi" || user === "kakajan") && (pass === "915091" || pass === "9919");
-
-        if(isAdminValid || isCustomUserValid) {
-            loggedInUser = (isAdminValid) ? user.toUpperCase() : matchedUser.username.toUpperCase();
-
-            document.getElementById('currentUserLabelHome').innerText = loggedInUser;
-            document.getElementById('currentUserLabelSatylan').innerText = loggedInUser;
-            document.getElementById('loginPage').style.display = 'none';
-            document.getElementById('mainApp').style.display = 'block';
-            document.getElementById('topLogo').style.display = 'block';
-            updateUI();
-        } else { 
-            if(pass.length >= 4) document.getElementById('loginError').style.display = 'block'; 
-        }
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('mainApp').style.display = 'block';
+        document.getElementById('topLogo').style.display = 'block';
     }
-
-    function openAdminModal() {
-        const adminUserCount = document.getElementById('adminUserCount');
-        const adminUsersList = document.getElementById('adminUsersList');
-        adminUserCount.innerText = 2 + usersList.length;
-        adminUsersList.innerHTML = '';
-
-        let admins = [{n: 'Berdi', p: '915091'}, {n: 'Kakajan', p: '9919'}];
-        admins.forEach(a => {
-            let li = document.createElement('li');
-            li.className = 'admin-user-item';
-            li.innerHTML = `<div class="admin-user-info"><b>${a.n}</b> <span>(Parol: ${a.p})</span></div> <div class="fixed-admin-badge">Admin</div>`;
-            adminUsersList.appendChild(li);
-        });
-
-        usersList.forEach((u, index) => {
-            let li = document.createElement('li');
-            li.className = 'admin-user-item';
-            li.innerHTML = `<div class="admin-user-info"><b>${u.username}</b> <span>(Parol: ${u.password})</span></div><button class="delete-user-btn" onclick="deleteUser(${index})">❌ Poz</button>`;
-            adminUsersList.appendChild(li);
-        });
-        document.getElementById('adminModal').style.display = 'flex';
-    }
-
-    function closeAdminModal() { document.getElementById('adminModal').style.display = 'none'; }
-    function deleteUser(index) {
-        if(confirm(`Öçürmek isleýärsiňizmi?`)) {
-            usersList.splice(index, 1);
-            localStorage.setItem('app_users_list', JSON.stringify(usersList));
-            openAdminModal();
-        }
-    }
-
-    function openRegisterModal() { document.getElementById('registerModal').style.display = 'flex'; }
-    function closeRegisterModal() { document.getElementById('registerModal').style.display = 'none'; }
-
-    function saveNewUser() {
-        const uName = document.getElementById('regUserInp').value.trim();
-        const uPass = document.getElementById('regPassInp').value.trim();
-        if(uName === "" || uPass === "") return;
-        usersList.push({ username: uName, password: uPass });
-        localStorage.setItem('app_users_list', JSON.stringify(usersList));
-        closeRegisterModal();
-    }
-
-    function openYusupModal() { 
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
-        if (sidebar.classList.contains('active')) {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-        document.getElementById('yusupModal').style.display = 'flex'; 
-    }
-    function closeYusupModal() { document.getElementById('yusupModal').style.display = 'none'; }
-    function autoCheckYusup() {
-        const pass = document.getElementById('yusupPassInput').value;
-        if(pass === "915091" || pass === "9919" || usersList.some(u => u.password === pass)) verifyYusupPass();
-    }
-    function verifyYusupPass() { closeYusupModal(); switchPage('yusup'); }
-
-    function openEditModal(index) {
-        selectedItemIndex = index;
-        let item = data[current][index];
-        document.getElementById('editName').value = item.name;
-        document.getElementById('editPrice').value = item.price;
-        document.getElementById('editProfit').value = item.profit;
-        document.getElementById('editModal').style.display = 'flex';
-    }
-    function closeEditModal() {
-        document.getElementById('editModal').style.display = 'none';
-        selectedItemIndex = null;
-    }
-    function saveEditedItem() {
-        if(selectedItemIndex !== null) {
-            let n = document.getElementById('editName').value.trim();
-            let p = parseFloat(document.getElementById('editPrice').value);
-            let pr = parseFloat(document.getElementById('editProfit').value) || 0;
-            if(n && !isNaN(p)) {
-                data[current][selectedItemIndex].name = n;
-                data[current][selectedItemIndex].price = p;
-                data[current][selectedItemIndex].profit = pr;
-                updateUI();
-                closeEditModal();
-            }
-        }
-    }
-    function deleteCurrentItem() {
-        if(selectedItemIndex !== null && confirm("Bu harydy doly pozmak isleýärsiňizmi?")) {
-            data[current].splice(selectedItemIndex, 1);
-            updateUI();
-            closeEditModal();
-        }
-    }
-
-    function toggleMenu() {
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
-        sidebar.classList.toggle('active');
-        overlay.classList.toggle('active');
-    }
-
-    function switchPage(p) {
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
-        if (sidebar.classList.contains('active')) {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-
-        current = (p === 'export') ? current : p;
-        
-        document.getElementById('nav-home').classList.toggle('active', p === 'berdi');
-        document.getElementById('nav-satylan').classList.toggle('active', p === 'satylan');
-        document.getElementById('nav-export').classList.toggle('active', p === 'export');
-        
-        document.getElementById('homeUI').style.display = (p === 'berdi' ? 'block' : 'none');
-        document.getElementById('satylanUI').style.display = (p === 'satylan' ? 'block' : 'none');
-        document.getElementById('yusupUI').style.display = (p === 'yusup' ? 'block' : 'none');
-        document.getElementById('exportUI').style.display = (p === 'export' ? 'block' : 'none'); 
-
-        document.getElementById('inputSection').style.display = (p === 'export' ? 'none' : 'block');
-        document.getElementById('itemList').style.display = (p === 'export' ? 'none' : 'block');
-        
-        if(p !== 'export') updateUI();
-    }
-
-    function updateUI() {
-        const list = document.getElementById('itemList');
-        const searchTerm = document.getElementById('searchBox').value.toLowerCase();
-        list.innerHTML = '';
-        let totalCount = 0, totalCost = 0, totalProfit = 0;
-        
-        data[current].forEach((item, originalIndex) => {
-            if(item.name.toLowerCase().includes(searchTerm)) {
-                let count = Number(item.count); let price = Number(item.price); let profit = Number(item.profit);
-                totalCount += count; totalCost += (price * count); totalProfit += (profit * count);
-                
-                const div = document.createElement('div');
-                div.className = 'glass-card item-card';
-                div.innerHTML = `
-                    <div class="item-details">
-                        <b style="font-size:17px; word-break: break-all;">${item.name}</b><br>
-                        <small style="color:var(--text-sub);">${price} TMT | Peýda: <b>+${(profit * count).toFixed(2)}</b></small>
-                    </div>
-                    <div class="item-actions">
-                        <button class="edit-action-btn" onclick="openEditModal(${originalIndex})">⚙️ Sazla</button>
-                        <div class="qty-control">
-                            <button class="qty-btn" onclick="qty(${originalIndex},-1)">-</button>
-                            <b>${count}</b>
-                            <button class="qty-btn" onclick="qty(${originalIndex},1)">+</button>
-                        </div>
-                    </div>`;
-                list.prepend(div);
-            }
-        });
-
-        let targetPrefix = (current === 'satylan') ? 's' : (current === 'yusup' ? 'y' : '');
-        
-        if(document.getElementById(targetPrefix + 'mainVal')) document.getElementById(targetPrefix + 'mainVal').innerText = totalProfit.toFixed(2) + " TMT";
-        if(document.getElementById(targetPrefix + 'kProfit')) document.getElementById(targetPrefix + 'kProfit').innerText = (totalProfit / 2).toFixed(2) + " TMT";
-        if(document.getElementById(targetPrefix + 'mProfit')) document.getElementById(targetPrefix + 'mProfit').innerText = (totalProfit / 2).toFixed(2) + " TMT";
-        if(document.getElementById(targetPrefix + 'tCountH')) document.getElementById(targetPrefix + 'tCountH').innerText = totalCount;
-        if(document.getElementById(targetPrefix + 'tCostH')) document.getElementById(targetPrefix + 'tCostH').innerText = totalCost.toFixed(2) + " TMT";
-        
-        if(current === 'satylan') {
-            document.getElementById('sCountH').innerText = totalCount;
-            document.getElementById('sCostH').innerText = totalCost.toFixed(2) + " TMT";
-            document.getElementById('sKProfit').innerText = (totalProfit / 2).toFixed(2) + " TMT";
-            document.getElementById('sMProfit').innerText = (totalProfit / 2).toFixed(2) + " TMT";
-        } else if(current === 'yusup') {
-            document.getElementById('yCountH').innerText = totalCount;
-            document.getElementById('yCostH').innerText = totalCost.toFixed(2) + " TMT";
-        }
-        
-        localStorage.setItem(current + '_data', JSON.stringify(data[current]));
-    }
-
-    function addItem() {
-        const n = document.getElementById('name').value.trim(); 
-        const c = parseFloat(document.getElementById('count').value); 
-        const p = parseFloat(document.getElementById('price').value); 
-        const pr = parseFloat(document.getElementById('profit').value) || 0;
-        if(n && !isNaN(c) && !isNaN(p)) { 
-            data[current].push({ name: n, count: c, price: p, profit: pr }); 
-            updateUI(); 
-            ['name', 'count', 'price', 'profit'].forEach(id => document.getElementById(id).value = ''); 
-        }
-    }
-    
-    function qty(i, d) { if(data[current][i].count + d >= 0) { data[current][i].count += d; updateUI(); } }
-    function toggleSearch() { const sb = document.getElementById('searchBox'); sb.style.display = (sb.style.display === 'block') ? 'none' : 'block'; }
-    
-    function exportBackupJSON() {
-        let backupData = { data: data, usersList: usersList };
-        let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupData));
-        let downloadAnchorNode = document.createElement('a');
-        downloadAnchorNode.setAttribute("href", dataStr);
-        downloadAnchorNode.setAttribute("download", "berdi_b_backup.json");
-        document.body.appendChild(downloadAnchorNode); downloadAnchorNode.click(); downloadAnchorNode.remove();
-    }
-
-    function importBackupJSON(event) {
-        let input = event.target; let reader = new FileReader();
-        reader.onload = function(){
-            try {
-                let imported = JSON.parse(reader.result);
-                if(imported.data) {
-                    data = imported.data; usersList = imported.usersList || usersList;
-                    localStorage.setItem('berdi_data', JSON.stringify(data.berdi));
-                    localStorage.setItem('satylan_data', JSON.stringify(data.satylan));
-                    localStorage.setItem('yusup_data', JSON.stringify(data.yusup));
-                    localStorage.setItem('app_users_list', JSON.stringify(usersList));
-                    alert("Yza ýüklenildi!"); location.reload();
-                }
-            } catch (e) { alert("Ýalňyşlyk!"); }
-        };
-        reader.readAsText(input.files[0]);
-    }
-
-    function exportToCSV() {
-        let csvContent = "\uFEFFBoluwi,Haryt Ady,Sany,Bahasy,Peyda\n";
-        ['berdi', 'satylan', 'yusup'].forEach(b => {
-            data[b].forEach(i => { csvContent += `${b},"${i.name.replace(/"/g, '""')}",${i.count},${i.price},${i.profit}\n`; });
-        });
-        let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        let link = document.createElement("a");
-        let url = URL.createObjectURL(blob);
-        link.setAttribute("href", url); link.setAttribute("download", "hasabat_berdi_b.csv");
-        document.body.appendChild(link); link.click(); link.remove();
-    }
-
-    function clearData() { if(confirm("Ählisini pozmalymy?")) { localStorage.clear(); location.reload(); } }
+    function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
 </script>
 
 <script type="module">
@@ -648,7 +106,6 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     window.db = db;
-    
     console.log("Firebase üstünlikli baglanyşdy!");
 </script>
 
