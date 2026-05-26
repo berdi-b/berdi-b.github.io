@@ -630,10 +630,9 @@
     }
 
     function clearData() { if(confirm("Ählisini pozmalymy?")) { localStorage.clear(); location.reload(); } }
-</script>
-    <script type="module">
+<script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyA-6RV8U_VBNlEzBLfiFcloFMPnmswKSc0",
@@ -646,10 +645,37 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    
-    window.db = db;
-    console.log("Firebase baglanyşyk gurnaldy!");
+    window.db = getFirestore(app);
+
+    window.saveNewUser = async function() {
+        const uName = document.getElementById('regUserInp').value.trim();
+        const uPass = document.getElementById('regPassInp').value.trim();
+        if(uName === "" || uPass === "") return;
+        try {
+            await setDoc(doc(window.db, "users", uName.toLowerCase()), { username: uName, password: uPass });
+            alert("Üstünlikli döredildi!");
+            closeRegisterModal();
+        } catch (e) { alert("Ýalňyşlyk: " + e.message); }
+    };
+
+    window.checkLogin = async function() {
+        const user = document.getElementById('userInp').value.trim().toLowerCase();
+        const pass = document.getElementById('passInp').value.trim();
+        if(user === "admin" && pass === "admin") { openAdminModal(); return; }
+
+        try {
+            const docSnap = await getDoc(doc(window.db, "users", user));
+            let isAdminValid = (user === "berdi" || user === "kakajan") && (pass === "915091" || pass === "9919");
+            if (isAdminValid || (docSnap.exists() && docSnap.data().password === pass)) {
+                loggedInUser = user.toUpperCase();
+                document.getElementById('currentUserLabelHome').innerText = loggedInUser;
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('mainApp').style.display = 'block';
+                document.getElementById('topLogo').style.display = 'block';
+                updateUI();
+            } else { document.getElementById('loginError').style.display = 'block'; }
+        } catch (e) { console.error(e); }
+    };
 </script>
 
 </body>
