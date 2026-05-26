@@ -630,7 +630,8 @@
     }
 
     function clearData() { if(confirm("Ählisini pozmalymy?")) { localStorage.clear(); location.reload(); } }
-<script type="module">
+</script>
+    <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
     import { getFirestore } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
@@ -647,9 +648,9 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     
-    // Firebase bazasyny global etdik (islendik ýerden ulanyp bilersiňiz)
     window.db = db;
     console.log("Firebase baglanyşyk gurnaldy!");
 </script>
+
 </body>
 </html>
